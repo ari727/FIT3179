@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ari727/FIT3179/main/china%20exports.csv"
+    },
+    "vconcat": [
+      {
+        "width": 500,
+        "height": 240,
+        "mark": "area",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "scale": {"domain": {"param": "brush"}},
+            "axis": {"title": "", "tickCount": 10}
+          },
+          "y": {
+            "field": "Change", 
+            "type": "quantitative",
+            "title": "Yearly change in Total Exports"}
+        }
+      },
+      {
+        "width": 500,
+        "height": 60,
+        "mark": "area",
+        "params": [
+          {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+        ],
+        "encoding": {
+          "x": {"field": "Year", "type": "temporal", "axis": {"tickCount": 10}},
+          "y": {
+            "field": "Change",
+            "type": "quantitative",
+            "title": "Yearly change in Total Exports",
+            "axis": {"tickCount": 3, "grid": true}
+          }
+        }
+      }
+    ]
+  }
